@@ -59,19 +59,16 @@ fun SpeechScreen(
 
             Button(
                 onClick = {
-                    runTextToSpeech(
-                        context,
-                        loadedPhrase,
-                        isBtnEnabled,
-                        speechScreenViewModel
-                    )
-                },
+                    speechScreenViewModel.runTextToSpeech(context)
+                }, enabled =  isBtnEnabled,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             ) {
                 Text(
                     text = "Listen"
                 )
             }
+
+            Spacer(modifier = Modifier.height(20.dp))
 
             Text(
                 text = speechContext.speechInput.value,
@@ -83,7 +80,7 @@ fun SpeechScreen(
                 color = DarkGrey
             )
 
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
             Button(
                 onClick = {
@@ -96,6 +93,8 @@ fun SpeechScreen(
                     text = "Speak"
                 )
             }
+
+            Spacer(modifier = Modifier.height(20.dp))
 
             if (speechContext.speechInput.value.isNotEmpty()) {
                 Text(
@@ -112,18 +111,13 @@ fun SpeechScreen(
                 )
             }
 
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
             Button(
                 onClick = {
                     speechContext.speechInput.value = ""
                     speechScreenViewModel.selectRandomFromList()
-                    runTextToSpeech(
-                        context,
-                        loadedPhrase,
-                        isBtnEnabled,
-                        speechScreenViewModel
-                    )
+                    speechScreenViewModel.runTextToSpeech(context)
                 },
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             ) {
@@ -133,34 +127,4 @@ fun SpeechScreen(
             }
         }
     }
-}
-
-fun runTextToSpeech(
-    context: Context,
-    loadedPhrase: String,
-    isBtnEnabled: Boolean,
-    speechScreenViewModel: SpeechScreenViewModel
-) {
-    var tts: TextToSpeech? = null
-    if (isBtnEnabled) {
-        speechScreenViewModel.isBtnEnabled.value = false
-        tts = TextToSpeech(
-            context
-        ) {
-            if (it == TextToSpeech.SUCCESS) {
-                tts?.let { txtToSpeech ->
-                    txtToSpeech.language = Locale.ENGLISH
-                    txtToSpeech.setPitch(1f)
-                    txtToSpeech.setSpeechRate(1f)
-                    txtToSpeech.speak(
-                        loadedPhrase,
-                        TextToSpeech.QUEUE_ADD,
-                        null,
-                        null
-                    )
-                }
-            }
-        }
-    }
-    speechScreenViewModel.isBtnEnabled.value = true
 }

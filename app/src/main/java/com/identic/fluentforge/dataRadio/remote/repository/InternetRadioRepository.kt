@@ -1,4 +1,4 @@
-package com.identic.fluentforge.data.remote.repository
+package com.identic.fluentforge.dataRadio.remote.repository
 
 import com.identic.fluentforge.common.Resource
 import com.identic.fluentforge.domain.model.InternetRadio

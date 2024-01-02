@@ -1,6 +1,6 @@
-package com.identic.fluentforge.data.remote.mapper
+package com.identic.fluentforge.dataRadio.remote.mapper
 
-import com.identic.fluentforge.data.remote.dto.InternetRadioDto
+import com.identic.fluentforge.dataRadio.remote.dto.InternetRadioDto
 import com.identic.fluentforge.domain.model.InternetRadio
 
 fun InternetRadioDto.toInternetRadio(): InternetRadio {

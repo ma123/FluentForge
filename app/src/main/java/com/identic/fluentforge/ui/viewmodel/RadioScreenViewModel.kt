@@ -9,7 +9,7 @@ import androidx.lifecycle.viewmodel.compose.saveable
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
 import com.identic.fluentforge.common.Resource
-import com.identic.fluentforge.data.remote.repository.InternetRadioRepository
+import com.identic.fluentforge.dataRadio.remote.repository.InternetRadioRepository
 import com.identic.fluentforge.domain.model.InternetRadio
 import com.identic.fluentforge.service.PlayerEvent
 import com.identic.fluentforge.service.SimpleMediaServiceHandler

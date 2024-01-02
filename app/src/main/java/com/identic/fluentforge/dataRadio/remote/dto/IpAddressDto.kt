@@ -1,4 +1,4 @@
-package com.identic.fluentforge.data.remote.dto
+package com.identic.fluentforge.dataRadio.remote.dto
 
 
 import com.google.gson.annotations.SerializedName

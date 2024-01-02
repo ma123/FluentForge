@@ -1,8 +1,8 @@
 package com.identic.fluentforge.di
 
 import com.identic.fluentforge.common.Constants
-import com.identic.fluentforge.data.InternetRadioApi
-import com.identic.fluentforge.data.remote.repository.InternetRadioRepository
+import com.identic.fluentforge.dataRadio.InternetRadioApi
+import com.identic.fluentforge.dataRadio.remote.repository.InternetRadioRepository
 import com.identic.fluentforge.domain.repository.InternetRadioRepositoryImpl
 import dagger.Module
 import dagger.Provides

@@ -1,6 +1,6 @@
-package com.identic.fluentforge.data
+package com.identic.fluentforge.dataRadio
 
-import com.identic.fluentforge.data.remote.dto.InternetRadioDto
+import com.identic.fluentforge.dataRadio.remote.dto.InternetRadioDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

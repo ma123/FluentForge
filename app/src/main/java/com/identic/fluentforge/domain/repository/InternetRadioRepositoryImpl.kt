@@ -1,9 +1,9 @@
 package com.identic.fluentforge.domain.repository
 
 import com.identic.fluentforge.common.Resource
-import com.identic.fluentforge.data.InternetRadioApi
-import com.identic.fluentforge.data.remote.mapper.toInternetRadio
-import com.identic.fluentforge.data.remote.repository.InternetRadioRepository
+import com.identic.fluentforge.dataRadio.InternetRadioApi
+import com.identic.fluentforge.dataRadio.remote.mapper.toInternetRadio
+import com.identic.fluentforge.dataRadio.remote.repository.InternetRadioRepository
 import com.identic.fluentforge.domain.model.InternetRadio
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

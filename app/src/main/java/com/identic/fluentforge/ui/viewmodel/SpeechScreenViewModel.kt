@@ -1,6 +1,8 @@
 package com.identic.fluentforge.ui.viewmodel
 
 import android.app.Application
+import android.content.Context
+import android.speech.tts.TextToSpeech
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,6 +19,7 @@ import java.util.*
 @HiltViewModel
 class SpeechScreenViewModel @Inject constructor(private val app: Application) : ViewModel() {
     private var phrasesList = emptyList<String>()
+    private  var  tts: TextToSpeech? = null
     var loadedPhrase = mutableStateOf("")
     var isBtnEnabled = mutableStateOf(true)
 
@@ -24,6 +27,7 @@ class SpeechScreenViewModel @Inject constructor(private val app: Application) : 
         viewModelScope.launch {
             readPhrases()
             selectRandomFromList()
+            runTextToSpeech(app.applicationContext)
         }
     }
 
@@ -59,6 +63,32 @@ class SpeechScreenViewModel @Inject constructor(private val app: Application) : 
         }
 
         return lines
+    }
+
+    fun runTextToSpeech(
+        context: Context
+    ) {
+        if (isBtnEnabled.value) {
+            isBtnEnabled.value = false
+            tts = TextToSpeech(
+                context
+            ) {
+                if (it == TextToSpeech.SUCCESS) {
+                    tts?.let { txtToSpeech ->
+                        txtToSpeech.language = Locale.ENGLISH
+                        txtToSpeech.setPitch(1f)
+                        txtToSpeech.setSpeechRate(1f)
+                        txtToSpeech.speak(
+                            loadedPhrase.value,
+                            TextToSpeech.QUEUE_ADD,
+                            null,
+                            null
+                        )
+                    }
+                }
+            }
+        }
+        isBtnEnabled.value = true
     }
 }
 
