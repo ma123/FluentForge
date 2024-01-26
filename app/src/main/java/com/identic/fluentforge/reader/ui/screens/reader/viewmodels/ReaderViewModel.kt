@@ -4,6 +4,7 @@ import androidx.annotation.Keep
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.font.Font
@@ -65,7 +66,7 @@ class ReaderViewModel @Inject constructor(
 
     var state by mutableStateOf(ReaderScreenState())
 
-    private var _textSize: MutableState<Int> = mutableStateOf(getFontSize())
+    private var _textSize: MutableState<Int> = mutableIntStateOf(getFontSize())
     val textSize: State<Int> = _textSize
 
     private var _readerFont: MutableState<ReaderFont> = mutableStateOf(getFontFamily())

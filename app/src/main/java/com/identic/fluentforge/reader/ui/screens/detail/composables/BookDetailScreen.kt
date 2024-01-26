@@ -26,7 +26,9 @@ import androidx.compose.material.Snackbar
 import androidx.compose.material.SnackbarHost
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.DownloadForOffline
 import androidx.compose.material.icons.filled.Language
+import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -531,7 +533,7 @@ fun MiddleBar(
                 ) {
                     Row {
                         Icon(
-                            imageVector = ImageVector.vectorResource(id = R.drawable.ic_book_pages),
+                            imageVector = Icons.Filled.MenuBook,
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.onBackground,
                             modifier = Modifier.padding(top = 13.dp, bottom = 15.dp, end = 4.dp)
@@ -558,7 +560,7 @@ fun MiddleBar(
                 ) {
                     Row {
                         Icon(
-                            imageVector = ImageVector.vectorResource(id = R.drawable.ic_book_downloads),
+                            imageVector = Icons.Filled.DownloadForOffline,
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.onBackground,
                             modifier = Modifier.padding(top = 15.dp, bottom = 13.dp, end = 4.dp)

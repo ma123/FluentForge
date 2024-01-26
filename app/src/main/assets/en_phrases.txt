@@ -1,3 +1,300 @@
+How are you?
+What's your name?
+Nice to meet you.
+Where are you from?
+Excuse me, please.
+Thank you very much.
+I don't understand.
+Can you help me?
+What's the time?
+I like it.
+I don't like it.
+How much is this?
+What do you do?
+Where is the bathroom?
+I'm sorry.
+It's okay.
+What's the weather like?
+What's your favorite food?
+See you later.
+Goodbye!
+How was your day?
+What's your favorite color?
+Can you repeat that, please?
+I need help with my homework.
+What's the capital of Japan?
+It's a beautiful day.
+I have a question.
+Let's go out for lunch.
+What's your hobby?
+I'm feeling tired.
+Can you speak more slowly?
+Where is the nearest bus stop?
+What's your phone number?
+I'm looking for a job.
+Do you have any siblings?
+That's a good idea.
+I'm sorry to hear that.
+How do you spell that?
+What's your favorite movie?
+Let's hang out sometime.
+What's the meaning of dataset?
+I don't know.
+Can you show me the way?
+I'm lost.
+I have a headache.
+Congratulations!
+I'm really excited.
+What's the WiFi password?
+Do you have any plans for the weekend?
+How was your weekend?
+Can I have the bill, please?
+What's the difference between mango and apple?
+I don't agree.
+Can I borrow a pen?
+I like your shirt.
+It's not a problem.
+Can I take a rain check?
+What's your favorite book?
+I'm looking forward to it.
+What's the score?
+This is delicious!
+I'm not sure.
+Can you recommend a good restaurant?
+Where did you go on your last vacation?
+I have to go now.
+I'll be right back.
+How do you say [word] in English?
+Let's make a plan.
+What's the latest news?
+I'm feeling better, thanks.
+What's your favorite season?
+What's the best way to learn English?
+I'm sorry for being late.
+Can I have a glass of water?
+What's your dream job?
+I'm so proud of you.
+That's a great idea!
+What's your favorite animal?
+Can you speak any other languages?
+What's the fastest way to get there?
+I'm running late.
+What do you do for a living?
+Can you recommend a good movie?
+How do you pronounce this word?
+I'm feeling under the weather.
+Do you have any pets?
+Could you please pass the salt?
+I have a lot on my plate right now.
+What's your favorite type of music?
+Let's grab a cup of coffee.
+I'm not sure about the answer.
+What's the deadline for this project?
+Can you speak up a bit?
+I have a sweet tooth.
+What's the meaning of life?
+I'm on a diet.
+Where did you learn English?
+Can I have a second opinion?
+It's a piece of cake.
+Let's keep in touch.
+Do you have any allergies?
+What's your favorite TV show?
+I don't have the time right now.
+I'll do my best.
+What's your favorite holiday?
+It's a small world.
+Can I try that on?
+That's a great achievement!
+How do you stay fit?
+I can't believe it!
+It's none of your business.
+What's your favorite subject in school?
+I'm so lucky.
+Let's make a reservation.
+Do you believe in love at first sight?
+I can't make it to the party.
+What's the secret ingredient?
+Let's go for a walk.
+Can I have your attention, please?
+What's the weather forecast for tomorrow?
+I have a question about the assignment.
+It's a long story.
+Can you recommend a good place to visit?
+I'm looking forward to the weekend.
+How do you like to spend your free time?
+I have mixed feelings about this.
+Let's agree to disagree.
+What's your favorite type of cuisine?
+I can't make up my mind.
+It's on the tip of my tongue.
+I'm feeling a bit overwhelmed.
+Can you give me a hand?
+I'm all ears.
+How do you handle stress?
+That's a good point.
+I'm on the same page.
+I'll get back to you on that.
+What's your daily routine like?
+I need to take a break.
+Can I have a moment of your time?
+I'm not a fan of surprises.
+What's the best way to stay motivated?
+I don't have a preference.
+Let's call it a day.
+I don't mind at all.
+What's your biggest accomplishment?
+I need some time to think it over.
+How do you deal with difficult situations?
+I have butterflies in my stomach.
+Let's cross that bridge when we come to it.
+What's your favorite type of exercise?
+I'm not feeling well today.
+Can you recommend a good book to read?
+I'm on the right track.
+It slipped my mind.
+What's your dream destination?
+I'm in the mood for something sweet.
+I have high hopes for the future.
+Can I have a rain check?
+Let's take a shortcut.
+I need to brush up on my skills.
+What's your favorite type of art?
+I can't make heads or tails of it.
+I'm on the same wavelength.
+I have a lot on my plate.
+What's the best way to learn a new language?
+Let's hit the road.
+I'm feeling on top of the world.
+What's the latest trend?
+I'll keep my fingers crossed.
+I'm not feeling up to it.
+Can you lend me a hand?
+I'm in a tight spot.
+Let's get down to business.
+What's your go-to comfort food?
+I'm in a pickle.
+Can you recommend a good place to eat?
+I'm over the moon.
+What's the craziest thing you've ever done?
+I'm at a loss for words.
+Let's play it by ear.
+Can you cut to the chase?
+I'm in the same boat.
+What's the best piece of advice you've received?
+I'm on pins and needles.
+Let's call it a night.
+I'm not a morning person.
+What's your guilty pleasure?
+I'll take a rain check.
+I'm feeling under the weather.
+Can you give me a heads up?
+I'm at a crossroads.
+What's your favorite type of weather?
+I'm in hot water.
+Let's turn over a new leaf.
+I'm feeling on the fence.
+Can you lend me an ear?
+I'm in the driver's seat.
+Let's play it cool.
+I'm feeling on cloud nine.
+What's the secret to your success?
+I'm in a good mood.
+Let's cut to the chase.
+I'm in no hurry.
+What's the story behind that?
+I'm feeling on top of the world.
+Can you give me a hand with this?
+I'm in a bind.
+Let's take a rain check on that.
+I'm not in the mood for jokes.
+What's your favorite way to relax?
+I'm in a bit of a rush.
+Can you break it down for me?
+I'm feeling on edge.
+Let's call it a day.
+What's your favorite childhood memory?
+I'm in hot water.
+Can you fill me in?
+I'm on the fence about it.
+Let's wrap it up.
+I'm feeling on the up and up.
+What's your take on this?
+I'm in a tight spot.
+Can you keep a secret?
+I'm on a roll.
+Let's take a step back.
+I'm feeling on the down and out.
+What's the plan for today?
+I'm in a sticky situation.
+Can you lend me a hand with this?
+I'm feeling under the weather.
+Let's get back to business.
+I'm in a tough spot.
+What's your favorite type of cuisine?
+I'm on the mend.
+Can you do me a favor?
+I'm feeling a bit out of sorts.
+Let's hit the hay.
+I'm in good spirits.
+What's your favorite way to spend a day off?
+I'm on cloud nine.
+Can you give me a heads up?
+I'm feeling a bit out of the loop.
+Let's take a rain check.
+I'm in a jam.
+What's your favorite hobby?
+I'm on a tight schedule.
+Can you make sense of this?
+I'm feeling on the mend.
+Let's get down to brass tacks.
+I'm in the middle of something.
+What's your favorite quote?
+I'm on the right track.
+Can you cut to the chase?
+I'm feeling out of my element.
+Let's get to the point.
+I'm in over my head.
+What's your favorite way to exercise?
+I'm on the right path.
+Can you fill me in on the details?
+I'm feeling in the groove.
+Let's dive right in.
+I'm in a good place.
+What's your favorite form of entertainment?
+I'm on a bit of a roll.
+Can you help me out with this?
+I'm feeling out of the loop.
+Let's hit the road.
+I'm in the zone.
+What's your favorite type of dessert?
+I'm on the ball.
+Can you lend me a hand with this?
+I'm feeling out of sorts.
+Let's cut to the chase.
+I'm in a sticky situation.
+What's your favorite type of exercise?
+I'm on cloud nine.
+Can you give me a hand with this?
+I'm feeling on top of the world.
+Let's take a step back.
+I'm in a tough spot.
+What's your favorite type of cuisine?
+I'm on the mend.
+Can you do me a favor?
+I'm feeling a bit out of sorts.
+Let's hit the hay.
+I'm in good spirits.
+What's your favorite way to spend a day off?
+I'm on cloud nine.
+Can you give me a heads up?
+I'm feeling a bit out of the loop.
+Let's take a rain check.
+I'm in a jam.
+What's your favorite hobby?
+I'm on a tight schedule.
+Can you make sense of this?
+I'm feeling on the mend.
 Be careful
 Be careful driving
 Can you translate this for me?
@@ -30,7 +327,6 @@ I don't want that
 I don't want to bother you
 I feel good
 If you need my help, please let me know
-I get off of work at 6
 I have a headache
 I hope you and your wife have a nice trip
 I know
@@ -66,7 +362,6 @@ Is that enough?
 I think it's very good
 I think it tastes good
 I thought the clothes were cheaper
-It's longer than 2 miles
 I've been here for two days
 I've heard Texas is a beautiful place
 I've never seen that before
@@ -149,7 +444,6 @@ Have a good trip
 Hello
 Nice to meet you
 Please call me
-About 300 kilometers
 A one way ticket
 Are you going to help her?
 A round trip ticket
@@ -189,7 +483,6 @@ One way or round trip?
 Please speak slower
 Please take me to the airport
 That way
-The plane departs at 5:30P
 They arrived yesterday
 Turn around
 Turn left
@@ -208,8 +501,6 @@ Where is she from?
 Where is the bathroom?
 Why not?
 Will you remind me?
-11 dollars
-52 cents
 A few
 A little
 Call the police
@@ -225,19 +516,16 @@ How much does this cost?
 How much do I owe you?
 How much is it to go to Miami?
 How much money do you make?
-I'd like to eat at 5th street restaurant
 I don't have a girlfriend
 I don't have any money
 I have a reservation
 I'll have the same thing
 I'll pay for dinner
 I'll pay for the tickets
-I'm 26 years old
 I need to practice my English
 Isn't it?
 Is that ok?
 Is there any mail for me?
-It's 11:30pm
 It's is a quarter past nine
 Please come in
 Sorry, we don't accept credit cards
@@ -245,14 +533,12 @@ Sorry, we only accept Cash
 That restaurant is not expensive
 That's too expensive
 There are many people here
-They charge 26 dollars per day
 What's the exchange rate for dollars?
 What's the phone number?
 Where can I buy tickets?
 Where would you like to meet?
 Which one is better?
 Across from the post office
-At 3 o'clock
 Be quiet
 Can you recommend a good restaurant?
 Here it is
@@ -265,20 +551,15 @@ How many miles is it to Pennsylvania?
 I'd like a single room
 I like to watch TV
 It's delicious!
-It's half past 11
-It's less than 5 dollars
-It's more than 5 dollars
 It's near the Supermarket
 it's not suppose to rain today
 It's ok
-It's on 7th street
 It's really hot
 It's suppose to rain tomorrow
 I was going to the library
 I was in the library
 Let's go
 Maybe
-More than 200 miles
 My house is close to the bank
 Near the bank
 On the left
@@ -343,28 +624,18 @@ Who is that?
 Who would you like to speak to?
 Will you take me home?
 Would you like water or milk?
-11 days ago
-2 hours
 All day
 A long time ago
 Are they coming this evening?
 Are you comfortable?
 Are your children with you?
 As soon as possible
-At 3 o'clock in the afternoon
-At 5th street
-At 7 o'clock at night (evening)?
-At 7 o'clock in the morning
 At what time did it happen?
 Can I help you?
 Do you have a swimming pool?
-Do you have this in size 11?
-Do you think you'll be back by 11:30?
-Everyday I get up at 6AM
 Every week
 Expiration date
 Have you been waiting long?
-He'll be back in 20 minutes
 His family is coming tomorrow
 How about Saturday?
 How long are you going to stay?
@@ -378,20 +649,13 @@ I'm just looking (Shopping)
 I'm worried too
 It'll be cold this evening
 It rained very hard today
-It's 17 dollars
-It's 6AM
-It's 8:45
-It's a quarter to 7
 It's going to snow today
 It's here
 It's there
 I've already seen it
 John is going on vacation tomorrow
-My birthday is August 27th
 Now or later?
-October 22nd
 She wants to know when you're coming
-Sometimes I go to sleep at 11PM, sometimes at 11:30PM
 There's plenty of time
 The whole day
 We're late
@@ -466,11 +730,8 @@ I'm from America.
 I'm going to bed.
 I'm here on business.
 I'm sorry.
-I only have 5 dollars.
 I think I need to see a doctor.
-It's August 25th.
 I understand.
-June 3rd.
 The food was delicious.
 There are some apples in the refrigerator.
 There's a restaurant near here.
@@ -538,11 +799,8 @@ I have pain in my arm.
 I have to wash my clothes.
 I have two sisters.
 I'll tell him you called.
-I'm 32.
-I'm 6'2".
 I'm allergic to seafood.
 I'm American.
-I'm a size 8.
 I'm fine, and you?
 I'm not afraid.
 I'm sick.
@@ -748,7 +1006,6 @@ How long is it?
 How many?
 How much is it?
 I have a lot of things to do.
-In 30 minutes.
 Is anyone else coming?
 Is everything ok?
 Is it cold outside?
@@ -803,7 +1060,6 @@ Would you ask him to call me back please?
 Yes.
 You have a very nice car.
 You look like my sister.
-6 dollars per hour.
 Are you waiting for someone?
 Are you working today?
 Bring me my shirt please.
@@ -842,7 +1098,6 @@ How's business?
 Is it close?
 Is it possible?
 Is it ready?
-It costs 20 dollars per hour.
 It hurts here.
 It's far from here.
 It's going to be hot today.
@@ -901,7 +1156,6 @@ Is your father home?
 I think so.
 I think those shoes are very good looking.
 It's very windy.
-It takes 2 hours by car.
 I've never done that.
 I've worked there for five years.
 I want to buy something.

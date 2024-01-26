@@ -77,7 +77,7 @@ class BookDetailViewModel @Inject constructor(
     fun downloadBook(
         book: Book, activity: MainActivity, downloadProgressListener: (Float, Int) -> Unit
     ): String {
-        return if (activity.checkStoragePermission()) {
+        return if (activity.checkPermission()) {
             bookDownloader.downloadBook(book = book,
                 downloadProgressListener = downloadProgressListener,
                 onDownloadSuccess = {

@@ -6,11 +6,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
@@ -18,6 +16,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PauseCircle
 import androidx.compose.material.icons.filled.PlayCircle
+import androidx.compose.material.icons.filled.Radio
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
@@ -41,27 +40,20 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
-import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.identic.fluentforge.R
 import com.identic.fluentforge.domain.model.InternetRadio
-import com.identic.fluentforge.reader.ui.common.BookItemCard
-import com.identic.fluentforge.reader.ui.navigation.Screens
-import com.identic.fluentforge.reader.ui.screens.home.composables.SearchAppBar
-import com.identic.fluentforge.reader.ui.screens.home.viewmodels.UserAction
-import com.identic.fluentforge.reader.utils.book.BookUtils
 import com.identic.fluentforge.ui.viewmodel.RadioScreenViewModel
 import com.identic.fluentforge.ui.viewmodel.UIEvent
 
@@ -83,7 +75,6 @@ fun RadioScreen(
         modifier = Modifier
             .fillMaxSize()
     ) {
-
         Scaffold(
             bottomBar = {
                 Column(
@@ -179,7 +170,7 @@ fun RadioItem(radio: InternetRadio, onRadioClick: () -> Unit) {
         ),
         shape = RoundedCornerShape(6.dp)
     ) {
-        Row(modifier = Modifier.fillMaxSize()) {
+        Row(modifier = Modifier.fillMaxSize().padding(8.dp)) {
             val imageBackground = if (isSystemInDarkTheme()) {
                 MaterialTheme.colorScheme.onSurface
             } else {
@@ -187,18 +178,20 @@ fun RadioItem(radio: InternetRadio, onRadioClick: () -> Unit) {
             }
             Box(
                 modifier = Modifier
-                    .weight(1f)
-                    .padding(8.dp)
                     .clip(RoundedCornerShape(6.dp))
                     .background(imageBackground)
+                    .align(Alignment.CenterVertically)
             ) {
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current).data(radio.favicon)
                         .crossfade(true).build(),
-                    placeholder = painterResource(id = R.drawable.ic_book_downloads),
                     contentDescription = stringResource(id = R.string.title_radio),
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop
+                    modifier = Modifier
+                        .size(64.dp)
+                        .padding(8.dp),
+                    contentScale = ContentScale.Crop,
+                    error = rememberVectorPainter(Icons.Filled.Radio),
+                    alignment = Alignment.Center
                 )
             }
 

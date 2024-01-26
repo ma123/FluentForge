@@ -22,7 +22,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Error
+import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -115,7 +117,7 @@ fun ReaderDetailScreen(
                     },
                     icon = {
                         Icon(
-                            imageVector = ImageVector.vectorResource(id = R.drawable.ic_reader_fab_button),
+                            imageVector = Icons.Filled.MenuBook,
                             contentDescription = null
                         )
                     },
@@ -322,7 +324,7 @@ fun ChapterItem(chapterTitle: String, onClick: () -> Unit) {
                 modifier = Modifier
                     .size(15.dp)
                     .weight(0.4f),
-                painter = painterResource(id = R.drawable.ic_right_arrow),
+                imageVector = Icons.Filled.ArrowForwardIos,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurface
             )

@@ -2,18 +2,25 @@ package com.identic.fluentforge.ui.viewmodel
 
 import android.app.Application
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.speech.RecognitionListener
+import android.speech.RecognizerIntent
+import android.speech.SpeechRecognizer
 import android.speech.tts.TextToSpeech
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.identic.fluentforge.common.Utils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
+import java.util.Locale
+import java.util.Random
 import javax.inject.Inject
-import java.util.*
 
 
 @HiltViewModel
@@ -22,6 +29,8 @@ class SpeechScreenViewModel @Inject constructor(private val app: Application) : 
     private  var  tts: TextToSpeech? = null
     var loadedPhrase = mutableStateOf("")
     var isBtnEnabled = mutableStateOf(true)
+    var percentMatch = mutableIntStateOf(0)
+    var textFromSpeech = mutableStateOf("")
 
     init {
         viewModelScope.launch {
@@ -31,7 +40,7 @@ class SpeechScreenViewModel @Inject constructor(private val app: Application) : 
         }
     }
 
-    fun readPhrases() {
+    private fun readPhrases() {
         phrasesList = readLinesFromAssets("en_phrases.txt")
     }
 
@@ -89,6 +98,50 @@ class SpeechScreenViewModel @Inject constructor(private val app: Application) : 
             }
         }
         isBtnEnabled.value = true
+    }
+
+    fun calculateLevensteinDistance(loadedPhrase:String,speechInput:String ) {
+        percentMatch.intValue = Utils.levenshteinDistancePercent(
+            loadedPhrase,
+            speechInput)
+    }
+
+    fun startSpeechToText(context: Context, finished: ()-> Unit) {
+        val speechRecognizer = SpeechRecognizer.createSpeechRecognizer(context)
+        val speechRecognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        speechRecognizerIntent.putExtra(
+            RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+            RecognizerIntent.LANGUAGE_MODEL_FREE_FORM,
+        )
+
+        // Optionally I have added my mother language
+        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+
+        speechRecognizer.setRecognitionListener(object : RecognitionListener {
+            override fun onReadyForSpeech(bundle: Bundle?) {}
+            override fun onBeginningOfSpeech() {}
+            override fun onRmsChanged(v: Float) {}
+            override fun onBufferReceived(bytes: ByteArray?) {}
+            override fun onEndOfSpeech() {
+                // changing the color of your mic icon to
+                // gray to indicate it is not listening or do something you want
+                finished()
+            }
+
+            override fun onError(i: Int) {}
+
+            override fun onResults(bundle: Bundle) {
+                val result = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
+                if (result != null) {
+                    textFromSpeech.value = result[0]
+                }
+            }
+
+            override fun onPartialResults(bundle: Bundle) {}
+            override fun onEvent(i: Int, bundle: Bundle?) {}
+
+        })
+        speechRecognizer.startListening(speechRecognizerIntent)
     }
 }
 

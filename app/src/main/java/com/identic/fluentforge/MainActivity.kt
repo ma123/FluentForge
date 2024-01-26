@@ -1,16 +1,12 @@
 package com.identic.fluentforge
 
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.Manifest.permission.RECORD_AUDIO
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.speech.RecognizerIntent
-import android.speech.SpeechRecognizer
-import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
@@ -34,7 +30,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -56,7 +52,6 @@ import com.identic.fluentforge.ui.screens.RadioScreen
 import com.identic.fluentforge.ui.screens.SpeechScreen
 import com.identic.fluentforge.ui.theme.FluentForgeTheme
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.Locale
 
 private data class Page(
     val iconRes: ImageVector,
@@ -80,7 +75,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var settingsViewModel: SettingsViewModel
     private lateinit var mainViewModel: MainViewModel
 
-    var speechInput = mutableStateOf("")
+   // var speechInput = mutableStateOf("")
 
     private var isServiceRunning = false
 
@@ -113,7 +108,7 @@ class MainActivity : AppCompatActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    var activePageIndex by rememberSaveable { mutableStateOf(0) }
+                    var activePageIndex by rememberSaveable { mutableIntStateOf(0) }
 
                     BackHandler(enabled = activePageIndex != 0) {
                         activePageIndex = 0
@@ -165,17 +160,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        checkStoragePermission()
+        checkPermission()
     }
 
 
-    fun checkStoragePermission(): Boolean {
+    fun checkPermission(): Boolean {
         return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
             if (checkSelfPermission(WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                 true
             } else {
                 ActivityCompat.requestPermissions(
-                    this, arrayOf(WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE), 1
+                    this, arrayOf(WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE, RECORD_AUDIO), 1
                 ); false
             }
         } else {
@@ -197,7 +192,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun askSpeechInput(context: Context) {
+   /* fun askSpeechInput(context: Context) {
         if (!SpeechRecognizer.isRecognitionAvailable(context)) {
             Toast.makeText(context, "Speech not Available", Toast.LENGTH_SHORT).show()
         } else {
@@ -219,5 +214,5 @@ class MainActivity : AppCompatActivity() {
             val result = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
             speechInput.value = result?.get(0).toString()
         }
-    }
+    }*/
 }

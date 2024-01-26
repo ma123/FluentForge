@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -76,7 +77,9 @@ fun BookItemCard(
                         .crossfade(true).build(),
                     placeholder = painterResource(id = R.drawable.placeholder),
                     contentDescription = stringResource(id = R.string.cover_image_desc),
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .width(118.dp)
+                        .height(169.dp),
                     contentScale = ContentScale.Crop
                 )
             }

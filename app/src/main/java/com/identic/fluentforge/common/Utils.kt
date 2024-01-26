@@ -12,11 +12,9 @@ class Utils {
         }
 
         private fun levenshteinDistance(str1: String, str2: String): Int {
-            val filtered = ".?!"
+            val filtered = ",.?!"
             val removedStr1 = str1.filterNot { filtered.indexOf(it) > -1 }.lowercase()
             val removedStr2 = str2.filterNot { filtered.indexOf(it) > -1 }.lowercase()
-
-            Timber.d("### first " + removedStr1 + "\n second " + removedStr2)
 
             val lenStr1 = removedStr1.length + 1
             val lenStr2 = removedStr2.length + 1
