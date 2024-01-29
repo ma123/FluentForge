@@ -4,11 +4,11 @@ import android.content.Context
 import com.identic.fluentforge.common.Constants
 import com.identic.fluentforge.dataRadio.InternetRadioApi
 import com.identic.fluentforge.dataRadio.remote.repository.InternetRadioRepository
+import com.identic.fluentforge.dataReader.local.FluentForgeDatabase
+import com.identic.fluentforge.dataReader.remote.repo.BookRepository
+import com.identic.fluentforge.dataReader.remote.utils.PreferenceUtil
+import com.identic.fluentforge.dataReader.remote.utils.book.BookDownloader
 import com.identic.fluentforge.domain.repository.InternetRadioRepositoryImpl
-import com.identic.fluentforge.reader.database.FluentForgeDatabase
-import com.identic.fluentforge.reader.repo.BookRepository
-import com.identic.fluentforge.reader.utils.PreferenceUtil
-import com.identic.fluentforge.reader.utils.book.BookDownloader
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

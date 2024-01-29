@@ -15,8 +15,8 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
-import com.identic.fluentforge.reader.ui.screens.settings.viewmodels.SettingsViewModel
-import com.identic.fluentforge.reader.ui.screens.settings.viewmodels.ThemeMode
+import com.identic.fluentforge.ui.screens.viewmodels.SettingsViewModel
+import com.identic.fluentforge.ui.screens.viewmodels.ThemeMode
 
 private val LightColors = lightColorScheme(
     onErrorContainer = md_theme_light_onErrorContainer,
@@ -128,7 +128,7 @@ fun FluentForgeTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = MaterialTheme.typography,
+        typography = Typography,
         content = content
     )
 }

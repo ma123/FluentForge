@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name" translatable="false">FluentForge</string>
-    <string name="listen_and_learn">Listen radio and learn</string>
     <string name="title_speak">Speak</string>
     <string name="title_library">Read</string>
     <string name="title_radio">Listen</string>
+    <string name="retry">Retry</string>
+    <string name="person">Person</string>
+    <string name="listen_voice">Listen voice</string>
+    <string name="match">Match</string>
+    <string name="speak">Speak</string>
+    <string name="next">Next</string>
     <!-- Others Strings -->
     <string name="not_applicable">N/A</string>
-    <string name="woops">"Whoops!!"</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
@@ -17,49 +21,25 @@
     <string name="network_error_retry">Try Again</string>
     <string name="error">Oops! Something went wrong.</string>
 
-    <!-- Navigation titles -->
-    <string name="navigation_home">Home</string>
-    <string name="navigation_categories">Categories</string>
-    <string name="navigation_library">Library</string>
-    <string name="navigation_settings">Settings</string>
-
     <!-- ToolTips -->
-    <string name="library_tooltip">TIP! Swipe library items left or right to share or view book details.</string>
-
-    <!-- Welcome Screen -->
-    <string name="welcome_screen_text">ThankYou for installing Myne!\nPlease Select your preferred e-book reader to get on speed.</string>
-    <string name="welcome_screen_button">Get Started</string>
-
-    <!-- Home screen. -->
-    <string name="home_header">All Books</string>
-    <string name="home_language_icon_desc">Sort by language</string>
-    <string name="home_search_icon_desc">Search books</string>
-    <string name="language_menu_title">Browse by language</string>
-
-    <!-- Categories screen. -->
-    <string name="categories_header">Categories</string>
-    <string name="no_books_found_for_lang_and_cat">No books available in %s language for this category.</string>
+    <string name="library_tooltip">TIP! Swipe library items right to view book details.</string>
 
     <!-- Library screen. -->
-    <string name="library_header">Library</string>
     <string name="empty_library">Nothing Here!</string>
     <string name="open_app_chooser">Open with…</string>
-    <string name="share_app_chooser">Share with…</string>
     <string name="library_read_button">Read</string>
     <string name="library_delete_button">Delete</string>
     <string name="library_delete_dialog_title">Are you sure about that?</string>
 
     <!-- Reader Detail Screen -->
-    <string name="reader_detail_header">Ebook Reader</string>
     <string name="start_reading_button">Start</string>
     <string name="continue_reading_button">Resume</string>
-    <string name="reader_chapters_list">Chapters</string>
     <string name="reader_error_title">Oops! Failed to open the e-book file :(</string>
     <string name="reader_error_subtitle">There could be several reasons for this to happen.</string>
     <string name="reader_error_reason_one_title">1. The e-book file was deleted.</string>
-    <string name="reader_error_reason_one_desc">Please check inside the MyneEbooks folder in your download directory, and if that\'s the case, please re-download the book.</string>
+    <string name="reader_error_reason_one_desc">Please check inside the FluentForgeEbooks folder in your download directory, and if that\'s the case, please re-download the book.</string>
     <string name="reader_error_reason_two_title">2. The file is there, but you have uninstalled the app previously.</string>
-    <string name="reader_error_reason_two_desc">Myne uses scoped-storage API of Android which means it can only access those files which were created by itself and cannot access any of the user\'s personal files. Due to this limitation, once the user uninstalls the app, it loses the permission to read &amp; modify files even if it was created by itself, if that\'s the case please delete the ebook\'s epub file from MyneEbooks folder inside your download directory and simply re-download the book.</string>
+    <string name="reader_error_reason_two_desc">Fluentforge uses scoped-storage API of Android which means it can only access those files which were created by itself and cannot access any of the user\'s personal files. Due to this limitation, once the user uninstalls the app, it loses the permission to read &amp; modify files even if it was created by itself, if that\'s the case please delete the ebook\'s epub file from MyneEbooks folder inside your download directory and simply re-download the book.</string>
     <string name="reader_error_back_button">Close &amp; Go Back</string>
 
     <!--Reader Screen -->
@@ -67,48 +47,16 @@
     <string name="reader_min_font_size_reached">Sorry, cannot go any lower than that!</string>
     <string name="reader_font_style_chooer">Change FontStyle</string>
 
-    <!-- Settings screen. -->
-    <string name="settings_header">Settings</string>
-    <string name="app_desc">Ebook Downloader</string>
-    <string name="made_by">Made with ❤ by Shivam</string>
-    <string name="general_settings_header">General</string>
-    <string name="default_reader_setting">Default Reader</string>
-    <string name="default_reader_dialog_title">Open ebooks with…</string>
-    <string name="display_setting_header">Display</string>
-    <string name="theme_setting">Default Theme</string>
-    <string name="theme_dialog_title">Change Theme</string>
     <string name="theme_dialog_apply_button">Apply</string>
-    <string name="material_you_setting" translatable="false">Material You</string>
-    <string name="material_you_settings_disabled_desc">Enable Material You</string>
-    <string name="material_you_settings_enabled_desc">Disable Material You</string>
-    <string name="material_you_error">This feature is only for devices running Android 12 or above.</string>
-    <string name="miscellaneous_setting_header">Miscellaneous</string>
-    <string name="license_setting">License &amp; Acknowledgements</string>
-    <string name="license_setting_desc">Open source licenses.</string>
-    <string name="about_setting">App Information</string>
-    <string name="about_setting_desc">Show App information &amp; useful links</string>
 
     <!-- Books card -->
     <string name="cover_image_desc">Book cover image</string>
 
     <!-- Book Detail Screen -->
-    <string name="book_detail_header">Book Details</string>
     <string name="back_button_desc">Go back.</string>
-    <string name="share_button_desc">Share this book.</string>
-    <string name="share_intent_header">Share this using…</string>
     <string name="read_book_button">Start Reading</string>
     <string name="download_book_button">Download</string>
     <string name="downloading_book">Download Started!</string>
     <string name="book_synopsis">Synopsis</string>
     <string name="book_synopsis_not_found">Not available</string>
-
-    <!-- About Screen -->
-    <string name="about_header">About</string>
-    <string name="about_desc">A Free &amp; Open Source Android application to download ebooks from the Project GutenBerg.</string>
-    <string name="developed_by">Developed By</string>
-    <string name="dev_name" translatable="false">Starry Shivam</string>
-    <string name="dev_username" translatable="false">\@starry-shivam</string>
-
-    <!-- Open source libraries screen -->
-    <string name="open_source_header">Open Source Libraries</string>
 </resources>

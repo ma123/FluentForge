@@ -42,14 +42,14 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.rememberNavController
 import coil.annotation.ExperimentalCoilApi
-import com.identic.fluentforge.reader.ui.navigation.NavGraph
-import com.identic.fluentforge.reader.ui.navigation.Screens
-import com.identic.fluentforge.reader.ui.screens.settings.viewmodels.SettingsViewModel
-import com.identic.fluentforge.reader.ui.screens.settings.viewmodels.ThemeMode
-import com.identic.fluentforge.reader.utils.NetworkObserver
+import com.identic.fluentforge.dataReader.remote.utils.NetworkObserver
+import com.identic.fluentforge.ui.navigation.NavGraph
+import com.identic.fluentforge.ui.navigation.Screens
+import com.identic.fluentforge.ui.screens.viewmodels.SettingsViewModel
+import com.identic.fluentforge.ui.screens.viewmodels.ThemeMode
 import com.identic.fluentforge.service.SimpleMediaService
-import com.identic.fluentforge.ui.screens.RadioScreen
-import com.identic.fluentforge.ui.screens.SpeechScreen
+import com.identic.fluentforge.ui.screens.radio.composables.RadioScreen
+import com.identic.fluentforge.ui.screens.speech.composables.SpeakScreen
 import com.identic.fluentforge.ui.theme.FluentForgeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -74,8 +74,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var networkObserver: NetworkObserver
     lateinit var settingsViewModel: SettingsViewModel
     private lateinit var mainViewModel: MainViewModel
-
-   // var speechInput = mutableStateOf("")
 
     private var isServiceRunning = false
 
@@ -103,7 +101,6 @@ class MainActivity : AppCompatActivity() {
                     initial = NetworkObserver.Status.Unavailable
                 )
 
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -119,7 +116,7 @@ class MainActivity : AppCompatActivity() {
                             AnimatedContent(targetState = activePageIndex, label = "") {
                                 when (it) {
                                     0 -> {
-                                        SpeechScreen()
+                                        SpeakScreen()
                                     }
 
                                     1 -> {
@@ -191,28 +188,4 @@ class MainActivity : AppCompatActivity() {
             isServiceRunning = true
         }
     }
-
-   /* fun askSpeechInput(context: Context) {
-        if (!SpeechRecognizer.isRecognitionAvailable(context)) {
-            Toast.makeText(context, "Speech not Available", Toast.LENGTH_SHORT).show()
-        } else {
-            val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-            intent.putExtra(
-                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH
-            )
-            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Talk")
-            startActivityForResult(intent, 102)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == 102 && resultCode == Activity.RESULT_OK) {
-            val result = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-            speechInput.value = result?.get(0).toString()
-        }
-    }*/
 }
