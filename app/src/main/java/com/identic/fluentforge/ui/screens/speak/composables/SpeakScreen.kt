@@ -1,8 +1,16 @@
-package com.identic.fluentforge.ui.screens.speech.composables
+package com.identic.fluentforge.ui.screens.speak.composables
 
 import android.annotation.SuppressLint
 import android.content.Context
-import androidx.compose.foundation.background
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,6 +30,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.RecordVoiceOver
 import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material3.Button
+import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -33,21 +42,24 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.identic.fluentforge.R
 import com.identic.fluentforge.common.Constants.PERCENT_MATCH
-import com.identic.fluentforge.ui.screens.speech.viewmodels.SpeakScreenViewModel
+import com.identic.fluentforge.ui.screens.speak.viewmodels.SpeakScreenViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SpeakScreen(
-    vm: SpeakScreenViewModel = hiltViewModel()
-) {
+fun SpeakScreen() {
+    val vm: SpeakScreenViewModel = hiltViewModel()
     val context = LocalContext.current
 
     val loadedPhrase by remember { vm.loadedPhrase }
@@ -57,6 +69,7 @@ fun SpeakScreen(
     Surface(
         modifier = Modifier
             .fillMaxSize()
+            .padding(bottom = 70.dp)
     ) {
         Scaffold(bottomBar = {
             SpeakBottomBar(
@@ -89,45 +102,43 @@ fun SpeakContent(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp)
+            .padding(40.dp)
     ) {
-        Icon(
-            modifier = Modifier.size(100.dp),
-            imageVector = Icons.Filled.Person,
+
+        Image(
+            modifier = Modifier.size(130.dp),
+            imageVector = ImageVector.vectorResource(R.drawable.listening_user),
             contentDescription = stringResource(id = R.string.person)
         )
 
-        Row(
+        Text(
+            text = loadedPhrase,
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier
                 .fillMaxWidth()
-        ) {
-            Text(
-                text = loadedPhrase,
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(18.dp),
-                maxLines = 2,
-                color = MaterialTheme.colorScheme.onSurface,
-                textAlign = TextAlign.Center
-            )
-        }
+                .padding(18.dp),
+            maxLines = 2,
+            color = MaterialTheme.colorScheme.onSurface,
+            textAlign = TextAlign.Center
+        )
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Button(
+        FilledIconButton(
             onClick = {
                 vm.runTextToSpeech(context)
             }, enabled = isBtnEnabled,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .size(64.dp)
-        ) {
-            Icon(
-                Icons.Filled.RecordVoiceOver,
-                contentDescription = stringResource(id = R.string.listen_voice)
-            )
-        }
+                .size(64.dp),
+            shape = CircleShape,
+            content = {
+                Image(
+                    imageVector = ImageVector.vectorResource(R.drawable.headphones),
+                    contentDescription = stringResource(id = R.string.listen_voice)
+                )
+            }
+        )
 
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -151,8 +162,8 @@ fun SpeakBottomBar(
     loadedPhrase: String,
     context: Context
 ) {
-    var micColor by remember { mutableStateOf(Color.Blue) }
     val percentMatch by remember { vm.percentMatch }
+    var isRunning by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -179,59 +190,67 @@ fun SpeakBottomBar(
 
         Row(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            Button(
+            Image(
                 modifier = Modifier
-                    .padding(10.dp)
-                    .weight(1F),
-                onClick = {
-                },
-                enabled = false
-            ) {
-                Icon(
-                    if (percentMatch >= PERCENT_MATCH) Icons.Filled.Mood else Icons.Filled.MoodBad,
-                    contentDescription = stringResource(id = R.string.match)
-                )
-            }
+                    .size(64.dp),
+                imageVector = if (percentMatch >= PERCENT_MATCH)
+                    ImageVector.vectorResource(R.drawable.good_answer)
+                else
+                    ImageVector.vectorResource(R.drawable.bad_answer),
+                contentDescription = stringResource(id = R.string.match)
+            )
 
-            Button(
+            val infiniteTransition = rememberInfiniteTransition(label = "")
+
+            val scale by infiniteTransition.animateFloat(
+                initialValue = 1f,
+                targetValue = if (isRunning) 1.2f else 1.0f,
+                animationSpec = infiniteRepeatable(
+                    animation = tween(1000, easing = LinearEasing),
+                    repeatMode = RepeatMode.Reverse
+                ), label = ""
+            )
+
+            FilledIconButton(
                 modifier = Modifier
-                    .padding(10.dp)
-                    .weight(1F)
-                    .size(64.dp)
-                    .background(micColor)
-                    .clip(CircleShape),
+                    .size(82.dp)
+                    .scale(scale),
+                shape = CircleShape,
                 onClick = {
                     vm.textFromSpeech.value = ""
-                    micColor = Color.Green
+                    isRunning = true
                     vm.startSpeechToText(context) {
-                        micColor = Color.Blue
+                        isRunning = false
                     }
+                },
+                content = {
+                    Image(
+                        imageVector = ImageVector.vectorResource(R.drawable.speak),
+                        contentDescription = stringResource(id = R.string.speak)
+                    )
                 }
-            ) {
-                Icon(
-                    Icons.Filled.Mic,
-                    contentDescription = stringResource(id = R.string.speak)
-                )
-            }
+            )
 
-            Button(
+            FilledIconButton(
                 modifier = Modifier
-                    .padding(10.dp)
-                    .weight(1F),
+                    .size(64.dp),
+                shape = CircleShape,
                 onClick = {
                     vm.textFromSpeech.value = ""
                     vm.selectRandomFromList()
                     vm.runTextToSpeech(context)
+                },
+                content = {
+                    Image(
+                        imageVector = ImageVector.vectorResource(R.drawable.next),
+                        contentDescription = stringResource(id = R.string.next)
+                    )
                 }
-            ) {
-                Icon(
-                    Icons.Filled.SkipNext,
-                    contentDescription = stringResource(id = R.string.next)
-                )
-            }
+            )
         }
     }
 }
-

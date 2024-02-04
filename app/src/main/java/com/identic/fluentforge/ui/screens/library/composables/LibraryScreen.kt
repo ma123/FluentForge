@@ -1,5 +1,6 @@
 package com.identic.fluentforge.ui.screens.library.composables
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -50,6 +51,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -99,6 +101,7 @@ fun LibraryScreen(navController: NavController) {
         snackbarHost = { SnackbarHost(snackBarHostState) },
         modifier = Modifier
             .fillMaxSize()
+            .padding(bottom = 70.dp)
             .background(MaterialTheme.colorScheme.background)
     ) {
         Box(modifier = Modifier.padding(it)) {
@@ -125,9 +128,13 @@ fun LibraryScreen(navController: NavController) {
 
                                 val openDeleteDialog = remember { mutableStateOf(false) }
 
-                                val detailsAction = SwipeAction(icon = painterResource(
-                                    id = if (settingsViewModel.getCurrentTheme() == ThemeMode.Dark) R.drawable.ic_info else R.drawable.ic_info_white
-                                ), background = MaterialTheme.colorScheme.primary, onSwipe = {
+                                val detailsAction = SwipeAction(icon = {
+                                    Image(
+                                        modifier = Modifier.size(42.dp),
+                                        imageVector = ImageVector.vectorResource(R.drawable.info),
+                                        contentDescription = stringResource(id = R.string.info)
+                                    )
+                                }, background = MaterialTheme.colorScheme.primary, onSwipe = {
                                     viewModel.viewModelScope.launch {
                                         delay(250L)
                                         navController.navigate(
@@ -246,11 +253,10 @@ fun LibraryCard(
                     .background(MaterialTheme.colorScheme.primary),
                 contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    imageVector = Icons.Filled.LibraryBooks,
-                    contentDescription = stringResource(id = R.string.back_button_desc),
-                    tint = MaterialTheme.colorScheme.onPrimary,
-                    modifier = Modifier.size(32.dp)
+                Image(
+                    modifier = Modifier.size(64.dp),
+                    imageVector = ImageVector.vectorResource(R.drawable.library),
+                    contentDescription = stringResource(id = R.string.title_library)
                 )
             }
 

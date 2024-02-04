@@ -1,4 +1,4 @@
-package com.identic.fluentforge.ui.screens.speech.viewmodels
+package com.identic.fluentforge.ui.screens.speak.viewmodels
 
 import android.app.Application
 import android.content.Context

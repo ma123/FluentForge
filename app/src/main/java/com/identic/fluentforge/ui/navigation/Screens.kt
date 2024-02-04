@@ -5,6 +5,8 @@ const val BOOK_ID_ARG_KEY = "bookId"
 sealed class Screens(val route: String) {
     data object HomeScreen : Screens("home")
     data object LibraryScreen : Screens("library")
+    data object SpeakScreen : Screens("speak")
+    data object RadioScreen : Screens("radio")
 
     data object BookDetailScreen : Screens("book_detail_screen/{$BOOK_ID_ARG_KEY}") {
         fun withBookId(id: String): String {

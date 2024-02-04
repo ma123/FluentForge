@@ -7,62 +7,30 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
-import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MenuBook
-import androidx.compose.material.icons.filled.Radio
-import androidx.compose.material.icons.filled.RecordVoiceOver
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.stringResource
 import androidx.core.app.ActivityCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.compose.rememberNavController
 import coil.annotation.ExperimentalCoilApi
 import com.identic.fluentforge.dataReader.remote.utils.NetworkObserver
-import com.identic.fluentforge.ui.navigation.NavGraph
+import com.identic.fluentforge.service.SimpleMediaService
 import com.identic.fluentforge.ui.navigation.Screens
+import com.identic.fluentforge.ui.screens.main.MainScreen
 import com.identic.fluentforge.ui.screens.viewmodels.SettingsViewModel
 import com.identic.fluentforge.ui.screens.viewmodels.ThemeMode
-import com.identic.fluentforge.service.SimpleMediaService
-import com.identic.fluentforge.ui.screens.radio.composables.RadioScreen
-import com.identic.fluentforge.ui.screens.speech.composables.SpeakScreen
 import com.identic.fluentforge.ui.theme.FluentForgeTheme
 import dagger.hilt.android.AndroidEntryPoint
-
-private data class Page(
-    val iconRes: ImageVector,
-    @StringRes val stringRes: Int,
-)
-
-private val pages = listOf(
-    Page(iconRes = Icons.Filled.RecordVoiceOver, stringRes = R.string.title_speak),
-    Page(iconRes = Icons.Filled.MenuBook, stringRes = R.string.title_library),
-    Page(iconRes = Icons.Filled.Radio, stringRes = R.string.title_radio),
-)
 
 @ExperimentalMaterialApi
 @ExperimentalCoilApi
@@ -105,54 +73,12 @@ class MainActivity : AppCompatActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    var activePageIndex by rememberSaveable { mutableIntStateOf(0) }
-
-                    BackHandler(enabled = activePageIndex != 0) {
-                        activePageIndex = 0
-                    }
-
-                    Column(Modifier.fillMaxSize()) {
-                        Box(Modifier.weight(1f)) {
-                            AnimatedContent(targetState = activePageIndex, label = "") {
-                                when (it) {
-                                    0 -> {
-                                        SpeakScreen()
-                                    }
-
-                                    1 -> {
-                                        val navController = rememberNavController()
-
-                                        NavGraph(
-                                            startDestination = Screens.HomeScreen.route,
-                                            navController = navController,
-                                            networkStatus = status
-                                        )
-                                    }
-
-                                    2 -> {
-                                        RadioScreen(startService = ::startService)
-                                    }
-                                }
-                            }
-                        }
-                        NavigationBar {
-                            pages.forEachIndexed { pageIndex, page ->
-                                NavigationBarItem(
-                                    icon = {
-                                        Icon(
-                                            imageVector = page.iconRes,
-                                            contentDescription = stringResource(id = page.stringRes)
-                                        )
-                                    },
-                                    label = { Text(stringResource(id = page.stringRes)) },
-                                    selected = activePageIndex == pageIndex,
-                                    onClick = {
-                                        activePageIndex = pageIndex
-                                    },
-                                )
-                            }
-                        }
-                    }
+                    MainScreen(
+                        startDestination = Screens.SpeakScreen.route,
+                        networkStatus = status,
+                        settingsViewModel = settingsViewModel,
+                        startService = ::startService
+                    )
                 }
             }
         }

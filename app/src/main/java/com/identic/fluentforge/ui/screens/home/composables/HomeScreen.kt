@@ -1,6 +1,7 @@
 package com.identic.fluentforge.ui.screens.home.composables
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
@@ -44,8 +46,11 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
@@ -53,6 +58,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.annotation.ExperimentalCoilApi
+import com.identic.fluentforge.R
+import com.identic.fluentforge.common.Constants
 import com.identic.fluentforge.dataReader.remote.utils.NetworkObserver
 import com.identic.fluentforge.dataReader.remote.utils.book.BookUtils
 import com.identic.fluentforge.ui.screens.commoncomposables.BookItemCard
@@ -123,13 +130,14 @@ fun HomeScreenScaffold(
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
+            .padding(bottom = 70.dp)
             .background(MaterialTheme.colorScheme.background),
         topBar = {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(MaterialTheme.colorScheme.background)
-                    .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 8.dp)
+                    .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 10.dp)
             ) {
                 SearchAppBar(onInputValueChange = { newText ->
                     viewModel.onAction(
@@ -144,14 +152,16 @@ fun HomeScreenScaffold(
         },
         floatingActionButton = {
             FloatingActionButton(
+                modifier = Modifier.padding(10.dp),
                 onClick = {
                     navController.navigate(Screens.LibraryScreen.route)
                 },
                 shape = CircleShape,
             ) {
-                Icon(
-                    Icons.Filled.MenuBook,
-                    "Floating action button."
+                Image(
+                    modifier = Modifier.size(64.dp),
+                    imageVector = ImageVector.vectorResource(R.drawable.library),
+                    contentDescription = stringResource(id = R.string.title_library)
                 )
             }
 

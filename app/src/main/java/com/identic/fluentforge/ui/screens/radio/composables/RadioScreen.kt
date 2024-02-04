@@ -59,9 +59,9 @@ import com.identic.fluentforge.ui.screens.radio.viewmodels.UIEvent
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun RadioScreen(
-    vm: RadioScreenViewModel = hiltViewModel(),
     startService: () -> Unit
 ) {
+    val vm: RadioScreenViewModel = hiltViewModel()
     val radioList by remember { vm.radiosList }
     val loadError by remember { vm.loadError }
     val isLoading by remember { vm.isLoading }
@@ -70,7 +70,7 @@ fun RadioScreen(
 
     Surface(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxSize().padding(bottom = 70.dp)
     ) {
         Scaffold(
             bottomBar = {
