@@ -26,7 +26,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SpeakScreenViewModel @Inject constructor(private val app: Application) : ViewModel() {
     private var phrasesList = emptyList<String>()
-    private  var  tts: TextToSpeech? = null
+    private var tts: TextToSpeech? = null
     var loadedPhrase = mutableStateOf("")
     var isBtnEnabled = mutableStateOf(true)
     var percentMatch = mutableIntStateOf(0)
@@ -100,13 +100,14 @@ class SpeakScreenViewModel @Inject constructor(private val app: Application) : V
         isBtnEnabled.value = true
     }
 
-    fun calculateLevensteinDistance(loadedPhrase:String,speechInput:String ) {
+    fun calculateLevensteinDistance(loadedPhrase: String, speechInput: String) {
         percentMatch.intValue = Utils.levenshteinDistancePercent(
             loadedPhrase,
-            speechInput)
+            speechInput
+        )
     }
 
-    fun startSpeechToText(context: Context, finished: ()-> Unit) {
+    fun startSpeechToText(context: Context, finished: () -> Unit) {
         val speechRecognizer = SpeechRecognizer.createSpeechRecognizer(context)
         val speechRecognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         speechRecognizerIntent.putExtra(
@@ -115,7 +116,7 @@ class SpeakScreenViewModel @Inject constructor(private val app: Application) : V
         )
 
         // Optionally I have added my mother language
-        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.ENGLISH)
 
         speechRecognizer.setRecognitionListener(object : RecognitionListener {
             override fun onReadyForSpeech(bundle: Bundle?) {}

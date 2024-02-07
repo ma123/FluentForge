@@ -26,17 +26,11 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Snackbar
 import androidx.compose.material.SnackbarHost
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.DownloadForOffline
-import androidx.compose.material.icons.filled.Language
-import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -163,13 +157,6 @@ fun BookDetailScreen(
                                 .fillMaxWidth()
                                 .height(240.dp)
                         ) {
-                            AsyncImage(
-                                model = R.drawable.book_details_bg,
-                                contentDescription = null,
-                                alpha = 0.35f,
-                                modifier = Modifier.fillMaxSize(),
-                                contentScale = ContentScale.Crop
-                            )
                             Box(
                                 modifier = Modifier
                                     .fillMaxSize()
@@ -533,11 +520,10 @@ fun MiddleBar(
                         .weight(1f),
                     contentAlignment = Alignment.Center
                 ) {
-                    Row {
-                        Icon(
-                            imageVector = Icons.Filled.Language,
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Image(
+                            imageVector = ImageVector.vectorResource(R.drawable.language),
                             contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onBackground,
                             modifier = Modifier.padding(top = 14.dp, bottom = 14.dp, end = 4.dp)
                         )
                         Text(
@@ -561,13 +547,13 @@ fun MiddleBar(
                         .weight(1f),
                     contentAlignment = Alignment.Center
                 ) {
-                    Row {
-                        Icon(
-                            imageVector = Icons.Filled.MenuBook,
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Image(
+                            imageVector = ImageVector.vectorResource(R.drawable.book),
                             contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onBackground,
                             modifier = Modifier.padding(top = 13.dp, bottom = 15.dp, end = 4.dp)
                         )
+
                         Text(
                             text = pageCount,
                             modifier = Modifier.padding(top = 14.dp, bottom = 14.dp, start = 4.dp),
@@ -588,11 +574,10 @@ fun MiddleBar(
                         .weight(1f),
                     contentAlignment = Alignment.Center
                 ) {
-                    Row {
-                        Icon(
-                            imageVector = Icons.Filled.DownloadForOffline,
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Image(
+                            imageVector = ImageVector.vectorResource(R.drawable.download),
                             contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onBackground,
                             modifier = Modifier.padding(top = 15.dp, bottom = 13.dp, end = 4.dp)
                         )
                         Text(
@@ -645,7 +630,7 @@ fun BookDetailTopBar(
                 contentDescription = stringResource(id = R.string.back_button_desc),
                 modifier = Modifier
                     .padding(14.dp)
-                    .size(48.dp)
+                    .size(32.dp)
             )
         }
     }

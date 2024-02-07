@@ -8,9 +8,7 @@ data class EpubImage(val absPath: String, val image: ByteArray) {
         other as EpubImage
 
         if (absPath != other.absPath) return false
-        if (!image.contentEquals(other.image)) return false
-
-        return true
+        return image.contentEquals(other.image)
     }
 
     override fun hashCode(): Int {

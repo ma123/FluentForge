@@ -29,12 +29,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.identic.fluentforge.ui.screens.reader.activities.ReaderActivity
-import com.identic.fluentforge.ui.screens.reader.viewmodels.ReaderViewModel
 import com.identic.fluentforge.R
 import com.identic.fluentforge.dataReader.remote.epub.BookTextMapper
 import com.identic.fluentforge.dataReader.remote.epub.models.EpubChapter
 import com.identic.fluentforge.dataReader.remote.utils.noRippleClickable
+import com.identic.fluentforge.ui.screens.reader.activities.ReaderActivity
+import com.identic.fluentforge.ui.screens.reader.viewmodels.ReaderViewModel
 import com.identic.fluentforge.ui.theme.FluentForgeTheme
 
 @ExperimentalMaterialApi

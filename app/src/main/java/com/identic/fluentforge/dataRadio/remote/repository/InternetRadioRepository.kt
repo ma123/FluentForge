@@ -5,5 +5,5 @@ import com.identic.fluentforge.domain.model.InternetRadio
 import kotlinx.coroutines.flow.Flow
 
 interface InternetRadioRepository {
-    suspend fun getAllInternetRadios():Flow<Resource<List<InternetRadio>>>
+    suspend fun getAllInternetRadios(): Flow<Resource<List<InternetRadio>>>
 }

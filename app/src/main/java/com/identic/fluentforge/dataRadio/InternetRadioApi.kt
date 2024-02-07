@@ -16,7 +16,7 @@ interface InternetRadioApi {
         @Query("countryExact") countryExact: Boolean = true,
         @Query("countrycode") countrycode: String = "GB",
         @Query("is_https") isHttps: Boolean = true,
-        @Query("limit") limit: Int = 30
+        @Query("limit") limit: Int = 200
         //@Query("offset") offset: Int = 20
         //offset if we want paging something like pokemon app
     ): List<InternetRadioDto>

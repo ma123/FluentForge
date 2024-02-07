@@ -46,10 +46,12 @@ class AppModule {
         FluentForgeDatabase.getInstance(context)
 
     @Provides
-    fun provideLibraryDao(fluentForgeDatabase: FluentForgeDatabase) = fluentForgeDatabase.getLibraryDao()
+    fun provideLibraryDao(fluentForgeDatabase: FluentForgeDatabase) =
+        fluentForgeDatabase.getLibraryDao()
 
     @Provides
-    fun provideReaderDao(fluentForgeDatabase: FluentForgeDatabase) = fluentForgeDatabase.getReaderDao()
+    fun provideReaderDao(fluentForgeDatabase: FluentForgeDatabase) =
+        fluentForgeDatabase.getReaderDao()
 
     @Singleton
     @Provides

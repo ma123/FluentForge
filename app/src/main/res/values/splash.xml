@@ -3,7 +3,7 @@
 
     <style name="Theme.FluentForge.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">?attr/backgroundColor</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_screen</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
         <item name="postSplashScreenTheme">@style/Theme.FluentForge</item>
     </style>
 </resources>

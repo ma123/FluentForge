@@ -13,17 +13,12 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Surface
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.PauseCircle
-import androidx.compose.material.icons.filled.PlayCircle
-import androidx.compose.material.icons.filled.Radio
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -43,6 +38,7 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -52,6 +48,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.identic.fluentforge.R
 import com.identic.fluentforge.domain.model.InternetRadio
+import com.identic.fluentforge.ui.screens.commoncomposables.ProgressDots
 import com.identic.fluentforge.ui.screens.radio.viewmodels.RadioScreenViewModel
 import com.identic.fluentforge.ui.screens.radio.viewmodels.UIEvent
 
@@ -70,7 +67,8 @@ fun RadioScreen(
 
     Surface(
         modifier = Modifier
-            .fillMaxSize().padding(bottom = 70.dp)
+            .fillMaxSize()
+            .padding(bottom = 70.dp)
     ) {
         Scaffold(
             bottomBar = {
@@ -120,7 +118,7 @@ fun RadioScreen(
                 modifier = Modifier.fillMaxSize()
             ) {
                 if (isLoading) {
-                    CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                    ProgressDots()
                 }
                 if (loadError.isNotEmpty()) {
                     RetrySection(error = loadError) {
@@ -138,7 +136,7 @@ fun InternetRadioBottomBar(vm: RadioScreenViewModel, startService: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.background)
-            .padding(top = 4.dp, bottom = 4.dp)
+            .padding(top = 10.dp, bottom = 20.dp)
     ) {
         Box(
             contentAlignment = Alignment.Center,
@@ -148,9 +146,11 @@ fun InternetRadioBottomBar(vm: RadioScreenViewModel, startService: () -> Unit) {
                 startService()
             }
 
+            val vectorRes = if (vm.isPlaying) ImageVector.vectorResource(R.drawable.pause)
+            else ImageVector.vectorResource(R.drawable.play)
+
             PlayerControls(playResourceProvider = {
-                if (vm.isPlaying) Icons.Filled.PauseCircle
-                else Icons.Filled.PlayCircle
+                vectorRes
             }, onUiEvent = vm::onUIEvent)
         }
     }
@@ -196,7 +196,9 @@ fun RadioItem(radio: InternetRadio, onRadioClick: () -> Unit) {
                         .size(64.dp)
                         .padding(8.dp),
                     contentScale = ContentScale.Crop,
-                    error = rememberVectorPainter(Icons.Filled.Radio),
+                    error = rememberVectorPainter(
+                        ImageVector.vectorResource(R.drawable.radio_placeholder)
+                    ),
                     alignment = Alignment.Center
                 )
             }
@@ -275,8 +277,7 @@ fun PlayerControls(
             modifier = Modifier
                 .clip(CircleShape)
                 .clickable(onClick = { onUiEvent(UIEvent.PlayPause) })
-                .padding(8.dp)
-                .size(56.dp)
+                .size(64.dp)
         )
     }
 }

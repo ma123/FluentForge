@@ -23,10 +23,10 @@ import coil.annotation.ExperimentalCoilApi
 import com.identic.fluentforge.dataReader.remote.utils.NetworkObserver
 import com.identic.fluentforge.ui.screens.detail.composables.BookDetailScreen
 import com.identic.fluentforge.ui.screens.home.composables.HomeScreen
-import com.identic.fluentforge.ui.screens.speak.composables.SpeakScreen
 import com.identic.fluentforge.ui.screens.library.composables.LibraryScreen
 import com.identic.fluentforge.ui.screens.radio.composables.RadioScreen
 import com.identic.fluentforge.ui.screens.reader.composables.ReaderDetailScreen
+import com.identic.fluentforge.ui.screens.speak.composables.SpeakScreen
 
 
 private const val NAVIGATION_ANIM_DURATION = 300

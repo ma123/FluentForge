@@ -1,6 +1,5 @@
 package com.identic.fluentforge.common
 
-import timber.log.Timber
 import kotlin.math.roundToInt
 
 class Utils {

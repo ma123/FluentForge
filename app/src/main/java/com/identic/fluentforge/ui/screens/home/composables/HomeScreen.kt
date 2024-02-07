@@ -23,10 +23,8 @@ import androidx.compose.material.ModalBottomSheetLayout
 import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.rememberModalBottomSheetState
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -59,13 +57,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.annotation.ExperimentalCoilApi
 import com.identic.fluentforge.R
-import com.identic.fluentforge.common.Constants
 import com.identic.fluentforge.dataReader.remote.utils.NetworkObserver
 import com.identic.fluentforge.dataReader.remote.utils.book.BookUtils
+import com.identic.fluentforge.ui.navigation.Screens
 import com.identic.fluentforge.ui.screens.commoncomposables.BookItemCard
 import com.identic.fluentforge.ui.screens.commoncomposables.NetworkError
 import com.identic.fluentforge.ui.screens.commoncomposables.ProgressDots
-import com.identic.fluentforge.ui.navigation.Screens
 import com.identic.fluentforge.ui.screens.home.viewmodels.HomeViewModel
 import com.identic.fluentforge.ui.screens.home.viewmodels.UserAction
 
@@ -181,7 +178,7 @@ fun HomeScreenScaffold(
                         Box(
                             modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
                         ) {
-                            CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                            ProgressDots()
                         }
                     } else if (!allBooksState.isLoading && allBooksState.error != null) {
                         NetworkError(onRetryClicked = { viewModel.reloadItems() })

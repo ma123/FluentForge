@@ -47,6 +47,7 @@ class SimpleMediaServiceHandler @Inject constructor(
                     startProgressUpdate()
                 }
             }
+
             PlayerEvent.Stop -> stopProgressUpdate()
             is PlayerEvent.UpdateProgress -> player.seekTo((player.duration * playerEvent.newProgress).toLong())
         }
@@ -57,6 +58,7 @@ class SimpleMediaServiceHandler @Inject constructor(
         when (playbackState) {
             ExoPlayer.STATE_BUFFERING -> _simpleMediaState.value =
                 SimpleMediaState.Buffering(player.currentPosition)
+
             ExoPlayer.STATE_READY -> _simpleMediaState.value =
                 SimpleMediaState.Ready(player.duration)
         }

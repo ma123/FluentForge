@@ -30,9 +30,7 @@ data class EpubFile(val absPath: String, val data: ByteArray) {
         other as EpubFile
 
         if (absPath != other.absPath) return false
-        if (!data.contentEquals(other.data)) return false
-
-        return true
+        return data.contentEquals(other.data)
     }
 
     override fun hashCode(): Int {

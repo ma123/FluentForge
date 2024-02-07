@@ -138,13 +138,6 @@ fun ReaderDetailScreen(
                         .fillMaxWidth()
                         .height(240.dp)
                 ) {
-                    AsyncImage(
-                        model = R.drawable.book_reader_bg,
-                        contentDescription = null,
-                        alpha = 0.35f,
-                        modifier = Modifier.fillMaxSize(),
-                        contentScale = ContentScale.Crop
-                    )
                     Box(
                         modifier = Modifier
                             .fillMaxSize()

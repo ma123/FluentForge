@@ -41,7 +41,6 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.icons.Icons
@@ -92,22 +91,23 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.identic.fluentforge.R
+import com.identic.fluentforge.dataReader.remote.utils.toToast
+import com.identic.fluentforge.databinding.ActivityReaderBinding
+import com.identic.fluentforge.ui.screens.commoncomposables.ProgressDots
 import com.identic.fluentforge.ui.screens.reader.adapters.ReaderClickListener
 import com.identic.fluentforge.ui.screens.reader.adapters.ReaderRVAdapter
 import com.identic.fluentforge.ui.screens.reader.viewmodels.ReaderFont
 import com.identic.fluentforge.ui.screens.reader.viewmodels.ReaderViewModel
 import com.identic.fluentforge.ui.screens.viewmodels.SettingsViewModel
 import com.identic.fluentforge.ui.screens.viewmodels.ThemeMode
+import com.identic.fluentforge.ui.theme.FluentForgeTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import java.io.FileInputStream
 import kotlin.properties.Delegates
-import com.identic.fluentforge.R
-import com.identic.fluentforge.dataReader.remote.utils.toToast
-import com.identic.fluentforge.databinding.ActivityReaderBinding
-import com.identic.fluentforge.ui.theme.FluentForgeTheme
 
 @AndroidEntryPoint
 @ExperimentalMaterial3Api
@@ -487,7 +487,7 @@ class ReaderActivity : AppCompatActivity(), ReaderClickListener {
                                 .padding(bottom = 65.dp),
                             contentAlignment = Alignment.Center
                         ) {
-                            CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                            ProgressDots()
                         }
                     } else {
                         readerContent(paddingValues)
