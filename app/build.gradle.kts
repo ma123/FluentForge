@@ -18,7 +18,7 @@ android {
         minSdk = 26
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -30,15 +30,26 @@ android {
         }
     }
 
-
     buildTypes {
+        debug {
+            isDebuggable = true
+            isMinifyEnabled = false
+            isShrinkResources = false
+        }
+
         release {
-            isMinifyEnabled = true
             isShrinkResources = true
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            /*applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    output.outputFile = "FluentForge-v${variant.versionName}.apk"
+                }
+            }*/
         }
     }
 
@@ -76,6 +87,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
     implementation("androidx.navigation:navigation-compose:2.7.6")
     implementation("androidx.work:work-runtime-ktx:2.7.1")
+   // implementation("com.android.tools:r8:8.2.42")
 
     // Jetpack compose.
     implementation("androidx.compose.ui:ui")
@@ -180,7 +192,7 @@ dependencies {
     implementation("androidx.media3:media3-session:1.2.0")
 
     // Glide
-    implementation("com.github.bumptech.glide:glide:4.15.1")
+    //implementation("com.github.bumptech.glide:glide:4.15.1")
 
     // Access old API
     implementation("androidx.appcompat:appcompat:1.6.1")

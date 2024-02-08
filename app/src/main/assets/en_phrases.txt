@@ -524,7 +524,7 @@ I'll pay for dinner
 I'll pay for the tickets
 I need to practice my English
 Isn't it?
-Is that ok?
+Is that okay?
 Is there any mail for me?
 It's is a quarter past nine
 Please come in
@@ -553,7 +553,7 @@ I like to watch TV
 It's delicious!
 It's near the Supermarket
 it's not suppose to rain today
-It's ok
+It's okay
 It's really hot
 It's suppose to rain tomorrow
 I was going to the library
@@ -603,7 +603,7 @@ I'll be right back
 I'll call back later
 I'll call you on Friday
 I'll teach you
-I'm ok
+I'm okay
 I need some tissues
 Is there an English speaking guide?
 I want to give you a gift
@@ -1007,7 +1007,7 @@ How many?
 How much is it?
 I have a lot of things to do.
 Is anyone else coming?
-Is everything ok?
+Is everything okay?
 Is it cold outside?
 Is it far from here?
 Is it hot?
