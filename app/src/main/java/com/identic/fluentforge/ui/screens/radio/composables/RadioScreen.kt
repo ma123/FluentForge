@@ -27,7 +27,9 @@ import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -62,6 +64,8 @@ fun RadioScreen(
     val radioList by remember { vm.radiosList }
     val loadError by remember { vm.loadError }
     val isLoading by remember { vm.isLoading }
+    var selectedItemId by remember { mutableStateOf("") }
+
     val pullRefreshState =
         rememberPullRefreshState(isLoading, { vm.loadInternetRadios() })
 
@@ -72,7 +76,9 @@ fun RadioScreen(
     ) {
         Scaffold(
             bottomBar = {
-                InternetRadioBottomBar(vm, startService)
+                if (selectedItemId.isNotEmpty()) {
+                    InternetRadioBottomBar(vm, startService)
+                }
             }
         ) {
             Box(
@@ -94,6 +100,7 @@ fun RadioScreen(
                             it.id
                         }) { radio ->
 
+
                         Box(
                             modifier = Modifier
                                 .padding(4.dp)
@@ -101,8 +108,12 @@ fun RadioScreen(
                             contentAlignment = Alignment.Center
                         ) {
                             RadioItem(
+                                selectedItemId,
                                 radio,
-                                onRadioClick = { vm.loadInternetRadio(radio) })
+                                onRadioClick = {
+                                    selectedItemId = radio.id
+                                    vm.loadInternetRadio(radio)
+                                })
                         }
                     }
                 }
@@ -158,7 +169,7 @@ fun InternetRadioBottomBar(vm: RadioScreenViewModel, startService: () -> Unit) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RadioItem(radio: InternetRadio, onRadioClick: () -> Unit) {
+fun RadioItem(selectedItemId: String, radio: InternetRadio, onRadioClick: () -> Unit) {
 
     Card(
         modifier = Modifier
@@ -166,9 +177,11 @@ fun RadioItem(radio: InternetRadio, onRadioClick: () -> Unit) {
             .fillMaxWidth(),
         onClick = onRadioClick,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(
-                2.dp
-            )
+            containerColor = if (selectedItemId == radio.id) {
+                MaterialTheme.colorScheme.secondaryContainer
+            } else {
+                MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp)
+            }
         ),
         shape = RoundedCornerShape(6.dp)
     ) {

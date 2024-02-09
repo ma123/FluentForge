@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi
 import androidx.lifecycle.viewmodel.compose.saveable
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
@@ -17,7 +18,6 @@ import com.identic.fluentforge.service.SimpleMediaState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -33,10 +33,10 @@ class RadioScreenViewModel @Inject constructor(
     var radiosList = mutableStateOf<List<InternetRadio>>(listOf())
     var loadError = mutableStateOf("")
     var isLoading = mutableStateOf(false)
+    @OptIn(SavedStateHandleSaveableApi::class)
     var isPlaying by savedStateHandle.saveable { mutableStateOf(false) }
 
     private val _uiState = MutableStateFlow<UIState>(UIState.Initial)
-    val uiState = _uiState.asStateFlow()
 
     init {
         viewModelScope.launch {
@@ -64,7 +64,6 @@ class RadioScreenViewModel @Inject constructor(
     fun onUIEvent(uiEvent: UIEvent) = viewModelScope.launch {
         when (uiEvent) {
             UIEvent.PlayPause -> simpleMediaServiceHandler.onPlayerEvent(PlayerEvent.PlayPause)
-            else -> {}
         }
     }
 
@@ -113,32 +112,13 @@ class RadioScreenViewModel @Inject constructor(
                     .build()
             ).build()
 
-        //val mediaItemList = mutableListOf<MediaItem>()
-        //(1..17).forEach {
-        //    mediaItemList.add(
-        //        MediaItem.Builder()
-        //            .setUri("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-$it.mp3")
-        //            .setMediaMetadata(MediaMetadata.Builder()
-        //                .setFolderType(MediaMetadata.FOLDER_TYPE_ALBUMS)
-        //                .setArtworkUri(Uri.parse("https://cdns-images.dzcdn.net/images/cover/1fddc1ab0535ee34189dc4c9f5f87bf9/264x264.jpg"))
-        //                .setAlbumTitle("SoundHelix")
-        //                .setDisplayTitle("Song $it")
-        //                .build()
-        //            ).build()
-        //    )
-        //}
-
         simpleMediaServiceHandler.addMediaItem(mediaItem)
-        //simpleMediaServiceHandler.addMediaItemList(mediaItemList)
         onUIEvent(UIEvent.PlayPause)
     }
 }
 
 sealed class UIEvent {
     object PlayPause : UIEvent()
-    object Backward : UIEvent()
-    object Forward : UIEvent()
-    data class UpdateProgress(val newProgress: Float) : UIEvent()
 }
 
 sealed class UIState {

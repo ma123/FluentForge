@@ -15,6 +15,7 @@ import androidx.lifecycle.viewModelScope
 import com.identic.fluentforge.common.Utils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader

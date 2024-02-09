@@ -43,6 +43,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.identic.fluentforge.R
 import com.identic.fluentforge.common.Constants.PERCENT_MATCH
 import com.identic.fluentforge.ui.screens.speak.viewmodels.SpeakScreenViewModel
+import timber.log.Timber
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -93,10 +94,10 @@ fun SpeakContent(
             .padding(40.dp)
     ) {
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         Image(
-            modifier = Modifier.size(130.dp),
+            modifier = Modifier.size(120.dp),
             imageVector = ImageVector.vectorResource(R.drawable.listening_user),
             contentDescription = stringResource(id = R.string.person)
         )
@@ -122,6 +123,7 @@ fun SpeakContent(
 
         FilledIconButton(
             onClick = {
+                Timber.d("### i am here")
                 vm.runTextToSpeech(context)
             }, enabled = isBtnEnabled,
             modifier = Modifier
@@ -197,10 +199,14 @@ fun SpeakBottomBar(
             Image(
                 modifier = Modifier
                     .size(64.dp),
-                imageVector = if (percentMatch >= PERCENT_MATCH)
-                    ImageVector.vectorResource(R.drawable.good_answer)
-                else
-                    ImageVector.vectorResource(R.drawable.bad_answer),
+                imageVector = if (percentMatch == 0) {
+                    ImageVector.vectorResource(R.drawable.neutral_answer)
+                } else {
+                    if (percentMatch >= PERCENT_MATCH)
+                        ImageVector.vectorResource(R.drawable.good_answer)
+                    else
+                        ImageVector.vectorResource(R.drawable.bad_answer)
+                },
                 contentDescription = stringResource(id = R.string.match)
             )
 
@@ -221,6 +227,7 @@ fun SpeakBottomBar(
                     .scale(scale),
                 shape = CircleShape,
                 onClick = {
+                    vm.percentMatch.intValue = 0
                     vm.textFromSpeech.value = ""
                     isRunning = true
                     vm.startSpeechToText(context) {
@@ -240,6 +247,7 @@ fun SpeakBottomBar(
                     .size(64.dp),
                 shape = CircleShape,
                 onClick = {
+                    vm.percentMatch.intValue = 0
                     vm.textFromSpeech.value = ""
                     vm.selectRandomFromList()
                     vm.runTextToSpeech(context)

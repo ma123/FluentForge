@@ -96,18 +96,10 @@ fun NavGraph(
 
         /** Home Screen */
         composable(route = Screens.HomeScreen.route,
-            enterTransition = { fadeIn(animationSpec = tween(FADEIN_ANIM_DURATION)) },
-            exitTransition = {
-                if (initialState.destination.route == Screens.BookDetailScreen.route) {
-                    exitTransition()
-                } else fadeOut(animationSpec = tween(FADEIN_ANIM_DURATION))
-            },
-            popEnterTransition = {
-                if (targetState.destination.route == Screens.BookDetailScreen.route) {
-                    popEnterTransition()
-                } else fadeIn(animationSpec = tween(FADEIN_ANIM_DURATION))
-            },
-            popExitTransition = { fadeOut(animationSpec = tween(FADEIN_ANIM_DURATION)) }) {
+            enterTransition = { enterTransition() },
+            exitTransition = { exitTransition() },
+            popEnterTransition = { popEnterTransition() },
+            popExitTransition = { popExitTransition() }) {
             HomeScreen(navController, networkStatus)
         }
 
